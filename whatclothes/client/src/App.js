@@ -2,10 +2,6 @@ import React from "react";
 import axios from "axios";
 import Clothing from "./components/clothing";
 
-import cheerio from "cheerio";
-
-
-
 class App extends React.Component {
 	state = {
 		clothing: []
@@ -17,12 +13,10 @@ class App extends React.Component {
 	}
 
 	getClothing = () => {
-
-
-		axios.get("http://www.gap.com/browse/category.do?cid=8792&sop=true&mlink=1015387,,flyout_women_New_Arrivals&departmentRedirect=true&departmentId=136#pageId=0&department=136").then((res) => {
-			var $ = cheerio.load(res.data);	
-		this.setState({
-				clothing: res.data.results
+		// call api to get three random users and save in state
+		axios.get("/all").then((res) => {
+			this.setState({
+				clothing: link
 			});
 		});
 	};
