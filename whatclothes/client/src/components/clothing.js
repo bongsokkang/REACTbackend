@@ -12,7 +12,7 @@ const Clothing = (props) => {
 
 	return (
 		<div className="col-lg-4" style={styles}>
-			<img src={props.user.picture.medium} className="img-circle" alt={name} />
+			<img src={props.user.picture.medium} className="img-circle" alt={clothingname} />
 			<div>{clothingname}</div>
 
 			<button className="btn btn-info" onClick={() => props.saveClothing(props.user)}>what you like to wear</button>

@@ -1,6 +1,10 @@
 import React from "react";
 import axios from "axios";
-import Contact from "./components/clothing";
+import Clothing from "./components/clothing";
+
+import cheerio from "cheerio";
+
+
 
 class App extends React.Component {
 	state = {
@@ -13,9 +17,11 @@ class App extends React.Component {
 	}
 
 	getClothing = () => {
-		// call api to get three random users and save in state
-		axios.get("https://randomuser.me/api/?results=3&nat=us").then((res) => {
-			this.setState({
+
+
+		axios.get("http://www.gap.com/browse/category.do?cid=8792&sop=true&mlink=1015387,,flyout_women_New_Arrivals&departmentRedirect=true&departmentId=136#pageId=0&department=136").then((res) => {
+			var $ = cheerio.load(res.data);	
+		this.setState({
 				clothing: res.data.results
 			});
 		});
@@ -36,7 +42,7 @@ class App extends React.Component {
 		return (
 			<div className="container text-center">
 				<div className="row">
-					{this.state.people.map((p, i) => {
+					{this.state.clothing.map((p, i) => {
 						// pass the user object into the child component
 						return (
 							<Clothing 
