@@ -1,36 +1,35 @@
 import React from "react";
 import axios from "axios";
-import Contact from "./components/Contact";
+import Contact from "./components/clothing";
 
 class App extends React.Component {
 	state = {
-		people: []
+		clothing: []
 	};
 
 	componentDidMount() {
 		// call api for the first time after page load
-		this.getUsers();
+		this.getClothing();
 	}
 
-	getUsers = () => {
+	getClothing = () => {
 		// call api to get three random users and save in state
 		axios.get("https://randomuser.me/api/?results=3&nat=us").then((res) => {
 			this.setState({
-				people: res.data.results
+				clothing: res.data.results
 			});
 		});
 	};
 
-	saveUser = (user) => {
+	saveClothing = (user) => {
 		// when the "keep" button is clicked, save user in db
 		axios.post("/save", {
-			name: `${user.name.first} ${user.name.last}`,
-			email: user.email,
-			zip: user.location.postcode
+			name: `${user.name.first}`,
+			photo: user.picture.medium
 		});
 
 		// get three new users
-		this.getUsers();
+		this.getClothing();
 	};
 
 	render() {
@@ -40,10 +39,10 @@ class App extends React.Component {
 					{this.state.people.map((p, i) => {
 						// pass the user object into the child component
 						return (
-							<Contact 
+							<Clothing 
 								key={i} 
 								user={p}
-								saveUser={this.saveUser}
+								saveClothing={this.saveClothing}
 							/>
 						);
 					})}

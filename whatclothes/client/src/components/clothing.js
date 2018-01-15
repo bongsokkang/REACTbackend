@@ -6,20 +6,18 @@ const styles = {
 	lineHeight: "200%"
 };
 
-const Contact = (props) => {
+const Clothing = (props) => {
 	// re-format name to make it easier to reference in the JSX code
-	let name = `${props.user.name.first} ${props.user.name.last}`;
+	let clothingname = `${props.user.name}`;
 
 	return (
 		<div className="col-lg-4" style={styles}>
 			<img src={props.user.picture.medium} className="img-circle" alt={name} />
-			<div>{name}</div>
-			<div>{props.user.email}</div>
-			<div>{props.user.location.postcode}</div>
+			<div>{clothingname}</div>
 
-			<button className="btn btn-info" onClick={() => props.saveUser(props.user)}>Keep</button>
+			<button className="btn btn-info" onClick={() => props.saveClothing(props.user)}>what you like to wear</button>
 		</div>
 	);
 };
 
-export default Contact;
+export default Clothing;

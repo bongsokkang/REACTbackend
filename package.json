@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bongsokkang/REACTbackend#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "mongoose": "^4.13.9"
   }
 }

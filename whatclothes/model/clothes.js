@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const clothingSchema = new Schema({
 	name: String,
-	photo: String,
-	category: String,
+	photo: String
 });
 
 const Clothing = mongoose.model("Clothing", clothingSchema);
